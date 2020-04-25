@@ -3,11 +3,11 @@ import CollectionPreview from "../../components/collection-preview/collection-pr
 import { SHOP_DATA } from "../../data/dummy-data";
 
 const ShopPage = () => {
+  //  eslint-disable-next-line
   const [shopData, setShopData] = useState(SHOP_DATA);
 
   return (
     <div>
-      <h1>SHOP PAGE</h1>
       {shopData.map((collection) => (
         <CollectionPreview
           key={collection.id}
