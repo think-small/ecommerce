@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import FormButton from "../form-button/form-button.component";
 import { auth, createUser } from "../../firebase/firebase.utils";
+import { withRouter } from "react-router-dom";
 import "./register-form.styles.scss";
 
-const Register = () => {
+const Register = (props) => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,6 +48,7 @@ const Register = () => {
       setPassword("");
       setConfirmPassword("");
       setEmail("");
+      props.history.push("/");
     } catch (e) {
       console.log(
         `Error while creating new user with email and password: ${e}`
@@ -98,4 +100,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

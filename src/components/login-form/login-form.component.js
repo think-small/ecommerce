@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import FormButton from "../form-button/form-button.component";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import { withRouter } from "react-router-dom";
 import "./login-form.styles.scss";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [flashMessage, setFlashMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,17 +24,29 @@ const LoginForm = () => {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setEmail("");
-    setPassword("");
-    console.log(`logging in with email: ${email} and password: ${password}`);
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setEmail("");
+      setPassword("");
+      setFlashMessage("");
+      props.history.push("/");
+    } catch (e) {
+      setFlashMessage("Email and/or password not found - unable to log in");
+    }
+  };
+
+  const handleGoogleAuth = async () => {
+    await signInWithGoogle();
+    props.history.push("/");
   };
 
   return (
     <div>
       <h2>I Already Have An Account</h2>
       <span>Log in with your email and password</span>
+      <div className="flash-message">{flashMessage}</div>
 
       <form className="login-form" onSubmit={onSubmit}>
         <FormInput
@@ -57,7 +71,11 @@ const LoginForm = () => {
 
         <div className="button-container">
           <FormButton type="submit">Log In</FormButton>
-          <FormButton icon={"fab fa-google"} onClick={signInWithGoogle}>
+          <FormButton
+            type="button"
+            icon={"fab fa-google"}
+            onClick={handleGoogleAuth}
+          >
             Log In with Google
           </FormButton>
         </div>
@@ -66,4 +84,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);
