@@ -21,6 +21,11 @@
     .nav-item {
       padding: 10px 15px;
       cursor: pointer;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        border: 2px solid black;
+      }
     }
   }
 }
