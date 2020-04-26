@@ -11,6 +11,39 @@
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: black;
+      opacity: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      border: 5px solid white;
+      opacity: 0;
+    }
+
+    &::before,
+    &::after {
+      transition: opacity 200ms ease-in-out;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 0.5;
+    }
   }
 
   .footer {
