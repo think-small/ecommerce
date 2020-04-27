@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import FormButton from "../form-button/form-button.component";
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
-import { withRouter } from "react-router-dom";
 import "./login-form.styles.scss";
 
 const LoginForm = (props) => {
