@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import FormButton from "../form-button/form-button.component";
@@ -31,7 +30,6 @@ const LoginForm = (props) => {
       setEmail("");
       setPassword("");
       setFlashMessage("");
-      props.history.push("/");
     } catch (e) {
       setFlashMessage("Email and/or password not found - unable to log in");
     }
@@ -39,7 +37,6 @@ const LoginForm = (props) => {
 
   const handleGoogleAuth = async () => {
     await signInWithGoogle();
-    props.history.push("/");
   };
 
   return (
@@ -84,4 +81,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default withRouter(LoginForm);
+export default LoginForm;

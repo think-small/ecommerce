@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
 import { auth, createUser } from "../../firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import FormButton from "../form-button/form-button.component";
@@ -100,4 +99,4 @@ const Register = (props) => {
   );
 };
 
-export default withRouter(Register);
+export default Register;
