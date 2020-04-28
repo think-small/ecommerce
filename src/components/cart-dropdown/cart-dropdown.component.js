@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import FormButton from "../form-button/form-button.component";
+import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
 const CartDropdown = ({ items }) => {
@@ -8,7 +9,7 @@ const CartDropdown = ({ items }) => {
     <div className="cart-dropdown">
       <div className="cart-items">
         {items.map((item) => {
-          return <div>{item.name}</div>;
+          return <CartItem item={item} key={item.id} />;
         })}
       </div>
       <FormButton>GO TO CHECKOUT</FormButton>

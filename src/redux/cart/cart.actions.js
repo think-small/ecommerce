@@ -12,3 +12,10 @@ export const addItemActionCreator = (item) => {
     payload: item,
   };
 };
+
+export const removeItemActionCreator = (item) => {
+  return {
+    type: cartActionTypes.REMOVE_ITEM,
+    payload: item,
+  };
+};
