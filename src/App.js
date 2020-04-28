@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { auth, createUser } from "./firebase/firebase.utils";
-import { setCurrentUserActionCreator } from "./redux/user/user.action";
+import { setCurrentUserActionCreator } from "./redux/user/user.actions";
 import Router from "./router/router.component";
 import Header from "./components/header/header.component";
 import "./App.css";

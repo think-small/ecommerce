@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import "./header.styles.scss";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, cartHiddenState }) => {
   const handleClick = () => auth.signOut();
 
   return (
@@ -29,13 +31,16 @@ const Header = ({ currentUser }) => {
             REGISTER / LOGIN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {!cartHiddenState && <CartDropdown />}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  cartHiddenState: state.cart.hidden,
 });
 
 export default connect(mapStateToProps)(Header);
