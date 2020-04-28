@@ -1,14 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { selectCartItems } from "../../redux/cart/cart.selectors";
 import FormButton from "../form-button/form-button.component";
 import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.styles.scss";
 
-const CartDropdown = ({ items }) => {
+const CartDropdown = ({ cartItems }) => {
   return (
     <div className="cart-dropdown">
-      <div className="cart-items">
-        {items.map((item) => {
+      <div className="cart-cartItems">
+        {cartItems.map((item) => {
           return <CartItem item={item} key={item.id} />;
         })}
       </div>
@@ -18,7 +19,7 @@ const CartDropdown = ({ items }) => {
 };
 
 const mapStateToProps = (state) => ({
-  items: state.cart.items,
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapStateToProps)(CartDropdown);
