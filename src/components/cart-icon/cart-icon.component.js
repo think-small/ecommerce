@@ -8,13 +8,17 @@ const CartIcon = (props) => {
   return (
     <div className="cart-icon" onClick={props.toggleHideCart}>
       <ShoppingCartIcon className="icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{props.cartSize}</span>
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  cartSize: state.cart.items.length,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   toggleHideCart: () => dispatch(toggleHiddenStateActionCreator()),
 });
 
-export default connect(null, mapDispatchToProps)(CartIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
