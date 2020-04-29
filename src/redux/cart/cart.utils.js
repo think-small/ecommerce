@@ -23,3 +23,11 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
       : cartItem
   );
 };
+
+export const deleteFromCart = (cartItems, cartItemToDelete) => {
+  const foundCartItem = cartItems.find(
+    (cartItem) => cartItem.id === cartItemToDelete.id
+  );
+  if (!foundCartItem) return [...cartItems];
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToDelete.id);
+};

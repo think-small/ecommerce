@@ -19,3 +19,10 @@ export const removeItemActionCreator = (item) => {
     payload: item,
   };
 };
+
+export const deleteFromCartActionCreator = (item) => {
+  return {
+    type: cartActionTypes.DELETE_FROM_CART,
+    payload: item,
+  };
+};
