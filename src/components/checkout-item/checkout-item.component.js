@@ -42,7 +42,7 @@ const CheckoutItem = ({ deleteFromCart, addItem, removeItem, item }) => {
           name="decrease-quantity"
           onClick={handleClick}
         ></i>
-        {quantity}
+        <span>{quantity}</span>
         <i
           className="fas fa-caret-right arrow-icon"
           name="increase-quantity"

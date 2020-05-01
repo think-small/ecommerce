@@ -17,13 +17,14 @@
     }
   }
   .field {
-    width: 23%;
+    width: 25%;
     display: flex;
     align-items: center;
 
     .arrow-icon {
       padding-right: 5px;
       font-size: 25px;
+      padding-top: 2px;
       cursor: pointer;
     }
 
@@ -32,8 +33,12 @@
     }
   }
 
+  .field:nth-child(2) {
+    width: 20%;
+  }
+
   .field:nth-child(3) {
-    padding-left: 25px;
+    padding-left: 30px;
   }
 
   .field:nth-child(4)::before {
